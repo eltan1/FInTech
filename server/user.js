@@ -6,43 +6,29 @@ router = express.Router();
 var magic = database.connection
 
 
-router.post("/user/login",(req,res)=>{
+router.post("/user/login", (req, res) => {
 
-    console.log(req.body);
-    magic.query(" SELECT * FROM user where user_id = ?",[req.body["user_id"]], (error, results)=>{
-        if(error){
-            console.log(error)
-            res.status(500).send(error)
+    console.log('/user/login', req.body);
+
+    magic.query(" SELECT * FROM user where user_id = ? and password = ?", [req.body["user_id"], req.body["password"]], (error, results) => {
+        if (error) {
+            console.error(error); // log error
+            res.status(500).end();
         }
 
-        /**
-         * [
-         *  {"user_id":"GHL","password":"0003"}
-         * ]
-         */
-
-        let user  = results[0]
-        let password  = user["password"]
-        if (req.body["password"]=== password){
-            res.send("SUCCESS")
+        if (results && results.length > 0) {
+            // Login successful (200 -> Success)
+            res.status(200);
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(results[0]));
         }
-        else{
-            res.send("FAILED")
+        else {
+            // Login failed (401 -> Unauthorized)
+            res.status(401).end();
         }
-        /**
-         * 1. retrieve the item in the first result 
-         * 2. get the passoword from the item 
-         * 3. compare request body pass word with 2. password
-         * 4. login success / login fail (res.send ) ()Booleand "SUCCESS" "FAILED"        
-         * 
-         */
-
-        
-
-
     })
 
-})
+});
 
 // // ADD USER
 // // The syntax for the .get() method goes like

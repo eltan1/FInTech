@@ -10,6 +10,8 @@ function loadVideos() {
             video_title.innerHTML  = videos[0].name;
         });
     });
+
+    setNumberOfCompletedLesson(1);
 }
 
 function onNextButtonClick() {
@@ -21,6 +23,8 @@ function onNextButtonClick() {
     document.getElementById("backbutton").disabled = false;
     lessonvideo.src = videos[counter].link;
     video_title.innerHTML  = videos[counter].name;
+
+    setNumberOfCompletedLesson(counter);
 }
 
 function onBackButtonClick() {

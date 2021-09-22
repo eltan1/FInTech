@@ -1,0 +1,36 @@
+
+#mainTitle {
+    color:aqua;
+    font-size:50px;
+    font-weight:bold;
+}
+
+.chapter {color: aqua;}
+
+#videocontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+#buttoncontainer {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+}
+
+#buttoncontainer .btn {
+    margin-left: 5px;
+}
+
+
+/* 
+Please note the followings: 
+1) Comment for CSS is indicated using this symbol
+2) The instruction are to be set within the curly bracket {}
+3) Note: # is for ID; . is for Class
+
+*/

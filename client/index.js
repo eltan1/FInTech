@@ -21,3 +21,5 @@ function logout() {
 function redirectToLoginPage() {
     window.location.href = 'login.html';
 }
+
+checkAuthenticated();

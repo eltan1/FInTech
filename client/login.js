@@ -16,7 +16,7 @@ function logIn() {
   .then(userData => {
     sessionStorage.setItem("userid", userData['user_id']);
     sessionStorage.setItem("user", userData['First_Name'] + ' ' + userData['Last_Name'] );
-    window.location.href = '../';
+    window.location.href = 'index.html';
   })
   .catch((error) => {
     console.log("error", error)

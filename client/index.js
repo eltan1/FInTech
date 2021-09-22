@@ -19,5 +19,5 @@ function logout() {
 }
 
 function redirectToLoginPage() {
-    window.location.href = 'login/';
+    window.location.href = 'login.html';
 }

@@ -9,14 +9,15 @@ const cors = require("cors");
 const user = require("./user");
 
 // create a service object which will listen to clients' requests
-let service = express();
+let app = express();
 // Tell the service to use JSON parser to parse requests.
-service.use(bodyParser.json());
+app.use(bodyParser.json());
 // Tell the service to use cors.
-service.use(cors());
+app.use(cors());
+app.options('*', cors());
 
 // Import API path mappings from user.js
-service.use(user.router);
+app.use(user.router);
 
 // Start the service at port number 3000
-service.listen(3000);
+app.listen(3000);
